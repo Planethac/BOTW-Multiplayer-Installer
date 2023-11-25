@@ -2,6 +2,7 @@
 using System.Net;
 using System.IO.Compression;
 using System.Diagnostics;
+using botwm.AdnvancedMode;
 
 namespace botwm
 {
@@ -18,6 +19,7 @@ namespace botwm
     {
         public static void Main(String[] args)
         {
+            Logger.init();
             Console.WriteLine("BOTW Multiplayer Setup");
             if (File.Exists("settings.json"))
             {
@@ -47,12 +49,20 @@ namespace botwm
             Console.WriteLine("[X] Game Files");
             Console.WriteLine();
             Console.WriteLine("To Change the list of modules to install type [C]");
+            Console.WriteLine("To Acces Advanced Mode type [A]");
+            Console.WriteLine("To Load autorun.json type [L]");
             Console.WriteLine("To Proced with instalation type [Y]");
             Console.Write(": ");
             String readline1 = Console.ReadLine();
             if (readline1.ToLower() == "y") InstallSoftware(modules);
             if (readline1.ToLower() == "c") ChangeModules();
-            
+            if (readline1.ToLower() == "g")
+            {
+                Console.WriteLine("Writing Test Json");
+                makeJson.settings(modules);
+            }
+            if (readline1.ToLower() == "l") AdvancedMode.LoadFile("autorun.json");
+            if (readline1.ToLower() == "a") /*TODO: Advanced Mode */ AdvancedMode.Init();
         }
 
         public static void InstallSoftware(String[] modules)
@@ -350,7 +360,8 @@ namespace botwm
             if (modules.Contains("game")) Jsettings.game = true;
             
             String fName = "settings.json";
-            String json = JsonSerializer.Serialize<Settings>(Jsettings);
+            var options = new JsonSerializerOptions { WriteIndented = true};
+            String json = JsonSerializer.Serialize<Settings>(Jsettings, options);
             File.WriteAllText(fName, json);
         }
     }
