@@ -7,7 +7,7 @@ public class AdvancedSetup
     public double version { get; set; }
     public String[] modules { get; set; }
     public String pyVnum { get; set; }
-    public double cemuVnum { get; set; }
+    public String cemuVnum { get; set; }
     public bool useCoustumPy { get; set; }
     public String pyCoustumUri { get; set; }
     public bool useCoustumCemu { get; set; }
