@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: microsoft/setup-msbuild@v4.8.9
+      - run: dotnet test
+      - run: msbuild
+      - run: dotnet publish -r win-x64 --self-contained -c Release
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: WindowsLatest
+          path: bin/Release/net6.0/win-x64/publish
