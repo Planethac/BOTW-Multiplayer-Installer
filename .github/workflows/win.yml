@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: microsoft/setup-msbuild@v4.8.9
+      - uses: microsoft/setup-msbuild@v1.3.1
       - run: dotnet test
       - run: msbuild
       - run: dotnet publish -r win-x64 --self-contained -c Release
