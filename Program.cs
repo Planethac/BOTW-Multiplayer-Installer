@@ -19,6 +19,12 @@ namespace botwm
     {
         public static void Main(String[] args)
         {
+            if (File.Exists("dwnBcml"))
+            {
+                String[] bcml = { "bcml" };
+                InstallSoftware(bcml);
+            }
+            
             Logger.init();
             Console.WriteLine("BOTW Multiplayer Setup");
             if (File.Exists("settings.json"))
@@ -46,7 +52,7 @@ namespace botwm
             Console.WriteLine("[X] Python 3.11");
             Console.WriteLine("[X] Cemu");
             Console.WriteLine("[X] Bcml");
-            Console.WriteLine("[X] Game Files");
+            Console.WriteLine("[X] Mod Files");
             Console.WriteLine();
             Console.WriteLine("To Change the list of modules to install type [C]");
             Console.WriteLine("To Acces Advanced Mode type [A]");
@@ -239,11 +245,31 @@ namespace botwm
                 }
 
                 Console.WriteLine("[ ] Module: bcml");
-                Process bcml = new Process();
-                bcml.StartInfo.FileName = "pip";
-                bcml.StartInfo.Arguments = "install bcml";
-                bcml.Start();
-                bcml.WaitForExit();
+
+                if (modules.Contains("py"))
+                {
+                    Console.WriteLine("As you have installed Python PIP is not in path");
+                    Console.WriteLine("Please rerun the exe an the install will continue");
+                    Console.WriteLine("Closing in 5 seconds");
+                    File.Create("dwnBcml");
+                    Thread.Sleep(5000);
+                    Environment.Exit(0);
+                    
+                }
+                else
+                {
+                    Process bcml = new Process();
+                    bcml.StartInfo.FileName = "pip";
+                    bcml.StartInfo.Arguments = "install bcml";
+                    bcml.Start();
+                    bcml.WaitForExit();
+                }
+                
+                if (File.Exists("dwnBcml"))
+                {
+                    File.Delete("dwnBcml");
+                    Environment.Exit(0);
+                }
                 
                 Console.Clear();
                 if (modules.Contains("game"))
