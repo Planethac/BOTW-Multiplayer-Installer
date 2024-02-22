@@ -24,6 +24,61 @@ public class AdvancedMode
             String fp = Console.ReadLine();
             LoadFile(fp);
         }
+        if (option.ToLower() == "c") CreateCoustum();
+    }
+
+    public static void CreateCoustum()
+    {
+        var csData = new AdvancedSetup()
+        {
+            version = 1.2,
+            pyVnum = "3.11",
+            cemuVnum = "1.26.2f"
+        };
+        string rl = "";
+        
+        Console.Write("List modules to install (space separated): ");
+        rl = Console.ReadLine();
+        csData.modules = rl.Split(" ");
+        Console.WriteLine();
+        Console.Write("Use coustum Python? (y/n): ");
+        rl = Console.ReadLine();
+        if (rl.ToLower() == "y")
+        {
+            csData.useCoustumPy = true;
+            Console.WriteLine();
+            Console.Write("Enter download link: ");
+            csData.pyCoustumUri = Console.ReadLine();
+        }
+        Console.Write("Use coustum Cemu? (y/n): ");
+        rl = Console.ReadLine();
+        if (rl.ToLower() == "y")
+        {
+            csData.useCoustumCemu = true;
+            Console.WriteLine();
+            Console.Write("Enter download link: ");
+            csData.cemuCoustumUri = Console.ReadLine();
+        }
+        Console.Write("Use coustum Mod Files? (y/n): ");
+        rl = Console.ReadLine();
+        if (rl.ToLower() == "y")
+        {
+            csData.useCoustumModFiles = true;
+            Console.WriteLine();
+            Console.Write("Enter download link: ");
+            csData.modFileUri = Console.ReadLine();
+        }
+        Console.Write("Auto dump game files? (y/n): ");
+        rl = Console.ReadLine();
+        if (rl.ToLower() == "y")
+        {
+            csData.autoDumpGameFiles = true;
+            Console.WriteLine();
+            Console.Write("Enter download link: ");
+            csData.gameFileUri = Console.ReadLine();
+        }
+        
+        JsonSR.SRAdvancedSetup(csData, "cstm");
     }
 
     public static void MakeDummy()
@@ -31,7 +86,7 @@ public class AdvancedMode
         String[] mod = { "py", "game", "cemu", "bcml", "fs" };
         var dummy = new AdvancedSetup()
         {
-            version = 1.0,
+            version = 1.2,
             modules = mod,
             pyVnum = "3.11",
             cemuVnum = "1.26.2f",
@@ -44,7 +99,7 @@ public class AdvancedMode
             autoDumpGameFiles = false,
             gameFileUri = "NONE"
         };
-        JsonSR.SRAdvancedSetup(dummy);
+        JsonSR.SRAdvancedSetup(dummy, "dummy");
     }
 
     public static void LoadFile(string filepath)

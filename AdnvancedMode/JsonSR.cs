@@ -20,11 +20,11 @@ public class AdvancedSetup
 
 public class JsonSR
 {
-    public static void SRAdvancedSetup(AdvancedSetup setup)
+    public static void SRAdvancedSetup(AdvancedSetup setup, string pth)
     {
         var options = new JsonSerializerOptions { WriteIndented = true};
         string SerializedJson = JsonSerializer.Serialize<AdvancedSetup>(setup, options);
-        File.WriteAllText("autorun.json", SerializedJson);
+        File.WriteAllText($"{pth}.json", SerializedJson);
     }
 
     public static AdvancedSetup DSAdvancedSetup(FileInfo fileInfo)
