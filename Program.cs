@@ -57,7 +57,7 @@ namespace botwm
             Console.WriteLine("To Change the list of modules to install type [C]");
             Console.WriteLine("To Acces Advanced Mode type [A]");
             Console.WriteLine("To Load autorun.json type [L]");
-            Console.WriteLine("To Proced with instalation type [Y]");
+            Console.WriteLine("To Proced with instalation type [Y] (recommended)");
             Console.Write(": ");
             String readline1 = Console.ReadLine();
             if (readline1.ToLower() == "y") InstallSoftware(modules);
