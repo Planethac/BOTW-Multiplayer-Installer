@@ -1,4 +1,4 @@
-# BOTWM Multiplayer Installer
+# BOTW Multiplayer Installer
 
 DISCLAIMER: I am in no way afiliate with the original devolepers of the mod or Nintendo and take no respnsebility for any harm caused by this tool or the mod!
 
