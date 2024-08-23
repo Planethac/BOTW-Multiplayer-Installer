@@ -329,8 +329,8 @@ namespace botwm
                 else Console.WriteLine("2 | [ ] Cemu");
                 if (bcml == 1) Console.WriteLine("3 | [X] Bcml");
                 else Console.WriteLine("3 | [ ] Bcml");
-                if (game == 1) Console.WriteLine("4 | [X] Game Files");
-                else Console.WriteLine("4 | [ ] Game Files");
+                if (game == 1) Console.WriteLine("4 | [X] Mode Files");
+                else Console.WriteLine("4 | [ ] Mod Files");
                 Console.Write(": ");
                 String arg = Console.ReadLine();
                 if (arg.ToLower() == "y") setupmode = 1;
