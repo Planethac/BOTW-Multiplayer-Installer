@@ -81,7 +81,7 @@ namespace botwm
                 WebClient webClient = new WebClient();
                 Directory.CreateDirectory("BOTW-COOP");
                 Directory.CreateDirectory(@"BOTW-COOP\tmp");
-                webClient.DownloadFile("https://cdn.planethac.me/botw/Downloads/Data/BOTW.multiplayer_1.0.4_files__setup_tutorial.zip", @"BOTW-COOP\tmp\mod-data.zip");
+                webClient.DownloadFile("https://www.planethac.me/botw/Downloads/Data/BOTW.multiplayer_1.0.4_files__setup_tutorial.zip", @"BOTW-COOP\tmp\mod-data.zip");
                 try
                 {
                     ZipFile.ExtractToDirectory(@"BOTW-COOP\tmp\mod-data.zip", "BOTW-COOP");
@@ -293,18 +293,18 @@ namespace botwm
         
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Process.Start("cmd", "/c start https://cdn.planethac.me/botw/SetupPart2.html");
+                Process.Start("cmd", "/c start https://www.planethac.me/botw/SetupPart2.html");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Process.Start("xdg-open", "https://cdn.planethac.me/botw/SetupPart2.html");
+                Process.Start("xdg-open", "https://www.planethac.me/botw/SetupPart2.html");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Process.Start("open", "https://cdn.planethac.me/botw/SetupPart2.html");
+                Process.Start("open", "https://www.planethac.me/botw/SetupPart2.html");
             }
             
-            Process.Start("cmd", "/c start https://cdn.planethac.me/botw/SetupPart2.html");
+            Process.Start("cmd", "/c start https://www.planethac.me/botw/SetupPart2.html");
         }
 
         public static String[] ChangeModules()
