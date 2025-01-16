@@ -20,13 +20,13 @@ namespace botwm
     {
         public static void Main(String[] args)
         {
+            Logger.init();
             if (File.Exists("dwnBcml"))
             {
                 String[] bcml = { "bcml" };
                 InstallSoftware(bcml);
             }
             
-            Logger.init();
             Console.WriteLine("BOTW Multiplayer Setup");
             if (File.Exists("settings.json"))
             {
@@ -170,7 +170,7 @@ namespace botwm
                 py.WaitForExit();
                 File.Delete(@"BOTW-COOP\py-tmp\python-setup.exe");
                 Directory.Delete(@"BOTW-COOP\py-tmp");
-                Process clitools = new Process();
+                /*Process clitools = new Process();
                 clitools.StartInfo.FileName = "pip";
                 clitools.StartInfo.Arguments = "install pathlib";
                 clitools.Start();
@@ -179,7 +179,8 @@ namespace botwm
                 clitools.StartInfo.Arguments = "install argparse";
                 clitools.Start();
                 clitools.WaitForExit();
-                Console.Clear();
+                Console.Clear();*/
+                Fiel.Create("./dwnBcml");
                 if (modules.Contains("game"))
                 {
                     Console.WriteLine("[X] Module: Mod Files");
